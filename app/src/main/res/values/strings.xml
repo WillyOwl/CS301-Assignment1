@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">zuo5-EmotiLog</string>
+    <string name="history_title">Log History</string>
+    <string name="summary_title">Log Summary</string>
+    <string name="no_logs">No logs yet.</string>
+    <string name="total_logs">Total logs: %1$d</string>
+    <string name="frequencies_header">Frequencies:</string>
+    <string name="recent_history_header">Recent History:</string>
+    <string name="happy">😊 Happy</string>
+    <string name="sad">😢 Sad</string>
+    <string name="grateful">🙏 Grateful</string>
+    <string name="angry">😡 Angry</string>
+    <string name="excited">🤩 Excited</string>
+    <string name="tired">😴 Tired</string>
+    <string name="calm">😌 Calm</string>
+    <string name="loved">🥰 Loved</string>
+    <string name="surprised">😮 Surprised</string>
+    <string name="view_history">View History</string>
+    <string name="view_summary">View Summary</string>
+    <string name="back_to_main">Back to Main Screen</string>
+</resources>
