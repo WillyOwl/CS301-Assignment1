@@ -3,6 +3,28 @@ package com.example.emotilog;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ LogManager - Singleton data manager for emotion log entries
+ 
+ Purpose:
+    LogManager is a singleton that handles all emotion log entries in the app. 
+    It acts as the one central place where emotional data is stored and accessed, 
+    making sure everything stays consistent throughout the app’s lifetime.
+ 
+ Design Rationale:
+   The design uses the Singleton pattern to ensure a single shared instance and avoid data duplication. 
+   An immutable LogEntry inner class preserves data integrity by preventing modification after logging. 
+   Logs are exposed only through defensive copies to protect against external changes, and simple, easily managed data structures are used throughout.
+ 
+ Outstanding Issues:
+    1. CRITICAL: No data persistence - all data is lost when app terminates
+    2. No data size limits - could consume unlimited memory over time
+    3. No data validation on emoticon input
+    4. No bulk operations
+    5. No sorting or filtering capabilities
+    6. No backup/export functionality
+*/
+
 public class LogManager {
     private static LogManager instance;
     private final List<LogEntry> logs = new ArrayList<>();

@@ -14,6 +14,29 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ SummaryActivity - Statistical analysis and visualization of emotion log data
+ 
+ Purpose:
+    Offers users analytical views of their emotional patterns by aggregating and summarizing their emotion logs. 
+    Provides users with statistical breakdowns of their emotion logs by day, including counts and percentages for each type of emotion.
+ 
+ Design Rationale:
+   To enable meaningful temporal analysis, data is grouped by day. 
+   Raw counts and percentages are combined to clearly convey relative emotion frequencies. 
+   A HashMap efficiently counts occurrences, while a LinkedHashMap preserves day order. 
+   Results are displayed in reverse chronological order so recent days are immediately visible
+ 
+ Outstanding Issues:
+    1. PERFORMANCE: Inefficient string building for large datasets
+    2. NO VISUALIZATIONS: No charts, graphs, or visual representations of trends
+    3. NO COMPARISON: Cannot compare different time periods
+    4. STATIC DATA: No real-time updates if new logs are added
+    5. NO FILTERING: Cannot filter summary by date ranges or specific emotions
+    6. MEMORY USAGE: Builds entire summary string in memory (problematic for large datasets)
+    7. NO EXPORT: Users cannot export summary data
+*/
+
 public class SummaryActivity extends AppCompatActivity {
 
     @Override
@@ -55,7 +78,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         for (String day : days) {
             List<LogManager.LogEntry> dayLogs = groupedLogs.get(day);
-            summary.append("=== ").append(day).append(" ===\n");
+            summary.append(day).append("\n");
             
             Map<String, Integer> counts = new HashMap<>();
             for (LogManager.LogEntry entry : dayLogs) {

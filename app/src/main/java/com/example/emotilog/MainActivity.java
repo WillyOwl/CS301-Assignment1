@@ -16,6 +16,30 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 
+/**
+ MainActivity – The main screen of the EmotiLog app.
+Purpose:
+    This is the first screen that the user will see when they open the app.
+    It allows them to log their current state of mind quickly by tapping on the emoji buttons, 
+    manage their custom emoji set, and go to the history/summary screen.
+
+ Design Rationale:
+    The emoji buttons are arranged in a grid, 
+    and long press is supported to place the emoji in a selected state for easy edition or deletion of custom emoji entries. 
+    All emoji-related operations are handled by a single listener for simplicity, 
+    and the logging is handled by a LogManager singleton for decoupling data handling from UI-related code. 
+    Material Design components are used for a consistent look and feel.
+
+ Outstanding Issues:
+    1. The logs will be reset since they’re not saved permanently.
+    2. Custom text for the emoji is not validated, which means users can input anything.
+    3. The number of custom emojis is not limited, which can cause the layout to be messy.
+    4. Some colors and sizes are hardcoded, which means they’re not defined in the resource file.
+    5. Accessibility is not yet implemented.
+    6. It does not prompt for confirmation when the user wants to delete the emoji.
+    7. The navigation intents do not yet have error handling.
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private Button selectedButton = null;
