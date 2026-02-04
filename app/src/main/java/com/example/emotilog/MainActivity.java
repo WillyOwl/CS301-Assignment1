@@ -38,6 +38,20 @@ Purpose:
     5. Accessibility is not yet implemented.
     6. It does not prompt for confirmation when the user wants to delete the emoji.
     7. The navigation intents do not yet have error handling.
+
+**Activities and Intents**  
+MainActivity is implemented as an Android activity and uses intents to navigate
+to the history and summary screens.
+
+- https://developer.android.com/guide/components/activities/intro-activities  
+- https://developer.android.com/guide/components/intents-filters  
+
+**Click and Long-Click Event Handling**  
+Emoji interactions are handled through standard click listeners for logging and
+long-click listeners for selecting emojis for editing or deletion.
+
+- https://developer.android.com/reference/android/view/View.OnClickListener  
+- https://developer.android.com/reference/android/view/View.OnLongClickListener  
  */
 
 public class MainActivity extends AppCompatActivity {

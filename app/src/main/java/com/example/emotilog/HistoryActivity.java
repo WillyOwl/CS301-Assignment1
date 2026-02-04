@@ -27,6 +27,18 @@ Outstanding Issues:
     3. NO EXPORT: Users cannot export their history data
     4. ACCESSIBILITY: Large text blocks may be difficult for users with disabilities
     5. NO EDITING: Users cannot modify or delete entries from history view
+
+**Activities and Navigation**  
+HistoryActivity is a standalone screen implemented as an activity and relies on
+Android’s activity lifecycle and back navigation behavior.
+
+- https://developer.android.com/guide/components/activities/intro-activities  
+
+**Date and Time Handling**  
+Timestamps are formatted into human-readable strings using the modern
+`java.time` API.
+
+- https://developer.android.com/reference/java/time/package-summary
  */
 public class HistoryActivity extends AppCompatActivity {
 

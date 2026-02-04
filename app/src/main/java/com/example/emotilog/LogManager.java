@@ -23,6 +23,19 @@ import java.util.List;
     4. No bulk operations
     5. No sorting or filtering capabilities
     6. No backup/export functionality
+
+**Singleton Pattern for Shared State**  
+LogManager follows a Singleton pattern to ensure that all activities interact
+with the same data instance and to prevent data duplication.
+
+- https://developer.android.com/training/dependency-injection/manual#singleton  
+- https://refactoring.guru/design-patterns/singleton  
+
+**Data Integrity and Controlled Access**  
+Log entries are designed to be immutable once created, and defensive copies are
+returned when exposing internal collections to prevent unintended modification.
+
+- https://docs.oracle.com/javase/tutorial/essential/concurrency/immutable.html  
 */
 
 public class LogManager {

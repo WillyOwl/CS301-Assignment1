@@ -35,6 +35,20 @@ import java.util.Map;
     5. NO FILTERING: Cannot filter summary by date ranges or specific emotions
     6. MEMORY USAGE: Builds entire summary string in memory (problematic for large datasets)
     7. NO EXPORT: Users cannot export summary data
+
+**Java Collections for Aggregation and Ordering**  
+Emotion frequencies are counted using a HashMap for efficiency, while a
+LinkedHashMap is used to preserve insertion order when displaying summaries by
+day.
+
+- https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html  
+- https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html  
+
+**Date and Time Handling**  
+Entries are grouped by day using the `java.time` API to support meaningful
+temporal analysis.
+
+- https://developer.android.com/reference/java/time/package-summary
 */
 
 public class SummaryActivity extends AppCompatActivity {
