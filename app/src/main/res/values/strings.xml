@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">zuo5-EmotiLog</string>
-    <string name="history_title">Log History</string>
-    <string name="summary_title">Log Summary</string>
+    <string name="history_title">History</string>
+    <string name="summary_title">Summary</string>
     <string name="no_logs">No logs yet.</string>
     <string name="total_logs">Total logs: %1$d</string>
-    <string name="frequencies_header">Frequencies:</string>
+    <string name="frequencies_header">Count &amp; Frequency:</string>
     <string name="recent_history_header">Recent History:</string>
     <string name="happy">😊 Happy</string>
     <string name="sad">😢 Sad</string>
@@ -18,4 +18,12 @@
     <string name="view_history">View History</string>
     <string name="view_summary">View Summary</string>
     <string name="back_to_main">Back to Main Screen</string>
+    <string name="edit_selected">Edit Selected</string>
+    <string name="log_selected">Log Selected</string>
+    <string name="edit_emoji_title">Edit Emoji</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_emoji">Add Emoji</string>
+    <string name="add_emoji_title">Add New Emoji</string>
+    <string name="delete_selected">Delete Selected</string>
 </resources>

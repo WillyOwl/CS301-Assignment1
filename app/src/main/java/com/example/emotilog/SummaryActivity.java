@@ -6,8 +6,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -33,26 +35,45 @@ public class SummaryActivity extends AppCompatActivity {
             return;
         }
 
-        Map<String, Integer> counts = new HashMap<>();
+        // Group logs by day
+        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Map<String, List<LogManager.LogEntry>> groupedLogs = new LinkedHashMap<>();
+        
+        // Logs are usually in chronological order, but we want most recent day first.
+        // First, group them.
         for (LogManager.LogEntry entry : logs) {
-            counts.put(entry.emoticon, counts.getOrDefault(entry.emoticon, 0) + 1);
+            String day = dayFormat.format(new Date(entry.timestamp));
+            groupedLogs.computeIfAbsent(day, k -> new ArrayList<>()).add(entry);
         }
 
         StringBuilder summary = new StringBuilder();
         summary.append(getString(R.string.total_logs, logs.size())).append("\n\n");
-        summary.append(getString(R.string.frequencies_header)).append("\n");
-        for (Map.Entry<String, Integer> entry : counts.entrySet()) {
-            summary.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
-        }
 
-        summary.append("\n").append(getString(R.string.recent_history_header)).append("\n");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        for (int i = logs.size() - 1; i >= 0; i--) {
-            LogManager.LogEntry entry = logs.get(i);
-            summary.append(sdf.format(new Date(entry.timestamp)))
-                    .append(" - ")
-                    .append(entry.emoticon)
-                    .append("\n");
+        // Convert keys to list and reverse to show most recent days first
+        List<String> days = new ArrayList<>(groupedLogs.keySet());
+        java.util.Collections.reverse(days);
+
+        for (String day : days) {
+            List<LogManager.LogEntry> dayLogs = groupedLogs.get(day);
+            summary.append("=== ").append(day).append(" ===\n");
+            
+            Map<String, Integer> counts = new HashMap<>();
+            for (LogManager.LogEntry entry : dayLogs) {
+                counts.put(entry.emoticon, counts.getOrDefault(entry.emoticon, 0) + 1);
+            }
+
+            int dayTotal = dayLogs.size();
+            for (Map.Entry<String, Integer> entry : counts.entrySet()) {
+                int count = entry.getValue();
+                double percentage = (count * 100.0) / dayTotal;
+                summary.append(entry.getKey())
+                        .append(": ")
+                        .append(count)
+                        .append(" (")
+                        .append(String.format(Locale.getDefault(), "%.1f%%", percentage))
+                        .append(")\n");
+            }
+            summary.append("\n");
         }
 
         tvSummary.setText(summary.toString());
